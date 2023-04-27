@@ -1,25 +1,22 @@
-import React from 'react'
-import { View } from '@tarojs/components'
-import {
-  Button,
-  Input
-} from "@nutui/nutui-react-taro";
-import './index.css'
+import React from 'react';
+import { View } from '@tarojs/components';
+import { Button, Input } from '@nutui/nutui-react-taro';
+import './index.css';
 import VForm, { VFormItem } from 'taro-vform';
 
 function Index() {
   return (
     <View className="page">
-      <VForm >
-        <VFormItem  name="aa" label="nihao">
-          <Input label={null}/>
+      <VForm onFinish={() => {
+        console.log('suming', "提交成功")
+      }} colon>
+        <VFormItem  name="aa" label="内容" inlineLabel>
+          <Input/>
         </VFormItem>
-      </VForm>
-      <View className="index">
-        <Button type="primary" className="btn">
-          NutUI React Button
+        <Button type="primary" className="btn" formType="submit">
+          提交
         </Button>
-      </View>
+      </VForm>
     </View>
   )
 }

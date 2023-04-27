@@ -228,8 +228,8 @@ function useForm(createOptions = {}) {
       return fieldElem => {
         const { trigger = 'onChange' } = options
         return React.cloneElement(fieldElem, {
-          ...fieldElem.props,
           ...props,
+          ...fieldElem.props,
           [trigger]: (...arg) => {
             if (fieldElem.props[trigger]) {
               fieldElem.props[trigger](...arg)

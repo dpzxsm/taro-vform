@@ -10,8 +10,8 @@
 
 .v-form-item-line {
   display: flex;
-  flex-direction: column;
-  margin: 0 16px;
+  flex-direction: row;
+  align-items: center;
 }
 
 .v-form-item-label {

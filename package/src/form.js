@@ -27,6 +27,7 @@ const VFormContext = React.createContext({
     setFields: () => null,
     isFieldTouched: () => null,
     isFieldsTouched: () => null,
+    submit: () => null,
   },
   initialValues: {},
   colon: false,
@@ -52,28 +53,36 @@ function VForm(props) {
     handleRef.current.onValuesChange && handleRef.current.onValuesChange(values);
   }, [values]);
 
+  handleRef.current.form.submit = () => {
+    handleRef.current.form
+      .validateFields()
+      .then(values => {
+        onFinish && onFinish(values);
+      })
+      .catch(err => {
+        showModal({
+          content: err.message,
+          showCancel: false,
+        });
+        onFinishFailed &&
+        onFinishFailed({
+          ...err,
+          values: handleRef.current.form.getFieldsValue(),
+          errorFields: handleRef.current.form.getFieldsError(),
+        });
+      });
+  }
+
+  handleRef.current.form.reset = () => {
+    handleRef.current.form.resetFields()
+    onReset && onReset();
+  }
+
   return (
     <Form
-      onSubmit={() => {
-        handleRef.current.form
-          .validateFields()
-          .then(values => {
-            onFinish && onFinish(values);
-          })
-          .catch(err => {
-            showModal({
-              content: err.message,
-              showCancel: false,
-            });
-            onFinishFailed &&
-            onFinishFailed({
-              ...err,
-              values: handleRef.current.form.getFieldsValue(),
-              errorFields: handleRef.current.form.getFieldsError(),
-            });
-          });
-      }}
-      onReset={onReset}
+      className='v-form'
+      onSubmit={handleRef.current.form.submit}
+      onReset={handleRef.current.form.reset}
     >
       <VFormContext.Provider value={contextValue}>{children}</VFormContext.Provider>
     </Form>
@@ -185,12 +194,13 @@ function VFormItem(props) {
   const fixChildren = typeof children === 'function' ? children(form.getFieldsValue(), form) : children;
 
   const [loading, setLoading] = useState(false);
-  const common = {
+  // 表单特殊属性，需要组件自己去处理
+  const fieldProps = {
     name,
     label,
     loading,
     showRequireMarker,
-  };
+  }
 
   const filed = name
     ? handleRef.current.form.getFieldDecorator(name, {
@@ -199,7 +209,7 @@ function VFormItem(props) {
       initialSource,
       initialVisible,
       rules: fixRules,
-    })(<VFormFiled {...common}>{fixChildren}</VFormFiled>)
+    })(<VFormFiled fieldProps={fieldProps}>{fixChildren}</VFormFiled>)
     : fixChildren;
 
   const filedVisible = form.getFieldVisible(name);
