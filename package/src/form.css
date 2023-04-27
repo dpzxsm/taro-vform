@@ -1,0 +1,30 @@
+.v-form {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.v-form-item {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.v-form-item-line {
+  display: flex;
+  flex-direction: column;
+  margin: 0 16px;
+}
+
+.v-form-item-label {
+  font-weight: bold;
+}
+
+.v-form-item-required{
+  color: red;
+  margin-right: 4px;
+  font-weight: bold;
+}
+
+.v-form-item-content {
+  flex: 1 1 0;
+  width: 0;
+}

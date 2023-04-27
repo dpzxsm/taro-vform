@@ -1,0 +1,27 @@
+{
+  "name": "taro-vform",
+  "version": "1.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "taro",
+    "react",
+    "form",
+    "useForm"
+  ],
+  "author": "suming",
+  "license": "ISC",
+  "dependencies": {
+    "async-validator": "^3.5.1",
+    "lodash.flatten": "^4.4.0",
+    "prop-types": "^15.8.1"
+  },
+  "peerDependencies": {
+    "@tarojs/components": ">=3.0.0",
+    "@tarojs/taro": ">=3.0.0",
+    "react": ">=16.0.0"
+  }
+}
