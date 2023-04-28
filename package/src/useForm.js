@@ -57,6 +57,7 @@ function useForm(createOptions = {}) {
       const {
         trigger = 'onChange',
         valuePropName = 'value',
+        sourcePropName = 'source',
         normalize = e => (e && e.target ? e.target[valuePropName] : e),
       } = fieldsOptions.current[n]
       const props = {
@@ -102,8 +103,7 @@ function useForm(createOptions = {}) {
           }
         },
       }
-      props.source = sources[n] || []
-      props.visible = visibles[n] !== undefined ? visibles[n] : true
+      props[sourcePropName] = sources[n] || []
       if (name instanceof Array) {
         const value = []
         name.forEach(n => {

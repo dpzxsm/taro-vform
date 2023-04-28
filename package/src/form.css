@@ -16,6 +16,8 @@
 
 .v-form-item-label {
   font-weight: bold;
+  text-align: right;
+  width: 100px;
 }
 
 .v-form-item-required{
@@ -27,4 +29,12 @@
 .v-form-item-content {
   flex: 1 1 0;
   width: 0;
+}
+
+.v-form-error{
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }

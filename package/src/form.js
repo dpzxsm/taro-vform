@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Form, Text, View } from '@tarojs/components';
-import { showModal } from '@tarojs/taro';
 import PropTypes from 'prop-types';
 import useForm from './useForm';
 import Request from './request';
@@ -60,10 +59,6 @@ function VForm(props) {
         onFinish && onFinish(values);
       })
       .catch(err => {
-        showModal({
-          content: err.message,
-          showCancel: false,
-        });
         onFinishFailed &&
         onFinishFailed({
           ...err,
@@ -212,6 +207,7 @@ function VFormItem(props) {
     })(<VFormFiled fieldProps={fieldProps}>{fixChildren}</VFormFiled>)
     : fixChildren;
 
+  const fieldError = form.getFieldError(name);
   const filedVisible = form.getFieldVisible(name);
   const formValues = form.getFieldsValue();
 
@@ -258,25 +254,35 @@ function VFormItem(props) {
 
   if (inlineLabel) {
     return (
-      <View className={'v-form-item v-form-item-line'}>
-        <View className={'v-form-item-label'}>
-          {showRequireMarker && <Text className={'v-form-item-required'}/>}
-          {label}
-          {fixColon && '：'}
+      <>
+        <View className={'v-form-item v-form-item-line'}>
+          <View className={'v-form-item-label'}>
+            {showRequireMarker && <Text className={'v-form-item-required'}/>}
+            {label}
+            {fixColon && '：'}
+          </View>
+          <View className={'v-form-item-content'}>{filed}</View>
         </View>
-        <View className={'v-form-item-content'}>{filed}</View>
-      </View>
+        {fieldError && (fieldError.map((item, index) => <View key={index} className={'v-form-error'}>
+          {item.message}
+        </View>))}
+      </>
     );
   } else {
     return (
-      <View className={'v-form-item'}>
-        <View className={'v-form-item-label'}>
-          {showRequireMarker && <Text className={'v-form-item-required'}/>}
-          {label}
-          {fixColon && '：'}
+      <>
+        <View className={'v-form-item'}>
+          <View className={'v-form-item-label'}>
+            {showRequireMarker && <Text className={'v-form-item-required'}/>}
+            {label}
+            {fixColon && '：'}
+          </View>
+          {filed}
         </View>
-        {filed}
-      </View>
+        {fieldError && (fieldError.map((item, index) => <View key={index} className={'v-form-error'}>
+          {item.message}
+        </View>))}
+      </>
     );
   }
 }
