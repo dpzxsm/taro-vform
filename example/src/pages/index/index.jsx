@@ -33,11 +33,6 @@ function Date({ value, onChange}) {
   </View>;
 }
 
-function Test(props){
-  console.log('suming', props)
-  return <View>22</View>
-}
-
 function Index() {
   return (
     <View className='page'>

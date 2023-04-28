@@ -66,12 +66,12 @@ function VForm(props) {
           errorFields: handleRef.current.form.getFieldsError(),
         });
       });
-  }
+  };
 
   handleRef.current.form.reset = () => {
-    handleRef.current.form.resetFields()
+    handleRef.current.form.resetFields();
     onReset && onReset();
-  }
+  };
 
   return (
     <Form
@@ -195,7 +195,7 @@ function VFormItem(props) {
     label,
     loading,
     showRequireMarker,
-  }
+  };
 
   const filed = name
     ? handleRef.current.form.getFieldDecorator(name, {
@@ -207,8 +207,8 @@ function VFormItem(props) {
     })(<VFormFiled fieldProps={fieldProps}>{fixChildren}</VFormFiled>)
     : fixChildren;
 
-  const fieldError = form.getFieldError(name);
-  const filedVisible = form.getFieldVisible(name);
+  const fieldErrors = form.getFieldError(name) || [];
+  const filedVisible = form.getFieldVisible(name) || false;
   const formValues = form.getFieldsValue();
 
   const remoteSourceValues = (
@@ -263,9 +263,9 @@ function VFormItem(props) {
           </View>
           <View className={'v-form-item-content'}>{filed}</View>
         </View>
-        {fieldError && (fieldError.map((item, index) => <View key={index} className={'v-form-error'}>
-          {item.message}
-        </View>))}
+        <View className={'v-form-error'} style={{ display: fieldErrors.length > 0 ? 'block' : 'none' }}>
+          {fieldErrors.map(item => item.message).join("，")}
+        </View>
       </>
     );
   } else {
@@ -279,9 +279,11 @@ function VFormItem(props) {
           </View>
           {filed}
         </View>
-        {fieldError && (fieldError.map((item, index) => <View key={index} className={'v-form-error'}>
-          {item.message}
-        </View>))}
+        <View className={'v-form-error'} style={{ display: fieldErrors.length > 0 ? 'block' : 'none' }}>
+          {fieldErrors.map((item, index) => <Text key={index}>
+            {item.message}
+          </Text>)}
+        </View>
       </>
     );
   }
@@ -328,6 +330,6 @@ VForm.useForm = useForm;
 
 export {
   VFormItem
-}
+};
 
 export default VForm;
