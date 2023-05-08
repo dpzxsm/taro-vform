@@ -23,7 +23,11 @@ const config = {
   framework: 'react',
   compiler: {
     type: 'webpack5',
-    prebundle: { enable: false }
+    prebundle: {
+      enable: true,
+      force: true,
+      exclude: ["taro-vform"]
+    }
   },
   cache: {
     enable: false

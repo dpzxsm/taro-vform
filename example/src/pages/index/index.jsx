@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { View } from '@tarojs/components';
 import { Button, Input, Calendar, Radio } from '@nutui/nutui-react-taro';
 import './index.css';
-import VForm, { VFormItem } from 'taro-vform';
+import VForm from 'taro-vform';
+
+const VFormItem = VForm.Item;
 
 function Date({ value, onChange}) {
   const [isVisible, setIsVisible] = useState(false);
