@@ -61,25 +61,48 @@ function handleSubmit(values) {
 }
 ```
 
-## 异步校验
+## 表单校验
+
+```javascript
+// 正则校验
+<VFormItem name='phone' label='手机号' rules={[{ pattern: /^1[3456789]\d{9}$/, message: '请输入正确的手机号' },]}>
+  <Input/>
+</VFormItem>
+
+// 长度校验
+<VFormItem name='name' label='姓名' rules={[{ type: "string", max: 5, message: '最多只能填写5个字符' },]}>
+  <Input/>
+</VFormItem>
+```
+
+## 远程数据源
+
+```javascript
+<VFormItem name='job' label='职业' remoteSource={{ url: "/api/job/options" }}>
+  <Select/>
+</VFormItem>
+```
+
+更多使用方法请求参考 [async-validator](https://github.com/yiminghe/async-validator)
 
 ## VForm
 
-| Prop 名称          | 类型     | 描述                                                               | 默认值   |
-|------------------|--------|------------------------------------------------------------------|-------|
-| `colon`          | `bool` | 是否在表单项标签后面显示冒号。                                                  | false |
-| `form`           | `any`  | antd 的 Form 实例。您可以通过该属性传递表单实例，并使用它的方法来控制表单。                      | -     |
-| `initialValues`  | `any`  | 表单的初始值。可以是一个普通对象或一个返回普通对象的函数。                                    | -     |
-| `onFinish`       | `func` | 当表单提交成功后触发的回调函数。                                                 | -     |
-| `onFinishFailed` | `func` | 当表单提交失败后触发的回调函数。                                                 | -     |
-| `onReset`        | `any`  | 当表单重置时触发的回调函数。可以是一个函数或一个返回函数的函数。                                 | -     |
-| `onValuesChange` | `any`  | 当表单项的值发生变化时触发的回调函数。可以是一个函数或一个返回函数的函数。                            | -     |
+| Prop 名称          | 类型          | 描述                                          | 默认值   |
+|------------------|-------------|---------------------------------------------|-------|
+| `children`       | `ReactNode` | 包含表单项的任意react元素                             | 无     |
+| `colon`          | `bool`      | 是否在表单项标签后面显示冒号。                             | false |
+| `form`           | `any`       | antd 的 Form 实例。您可以通过该属性传递表单实例，并使用它的方法来控制表单。 | -     |
+| `initialValues`  | `any`       | 表单的初始值。可以是一个普通对象或一个返回普通对象的函数。               | -     |
+| `onFinish`       | `func`      | 当表单提交成功后触发的回调函数。                            | -     |
+| `onFinishFailed` | `func`      | 当表单提交失败后触发的回调函数。                            | -     |
+| `onReset`        | `any`       | 当表单重置时触发的回调函数。可以是一个函数或一个返回函数的函数。            | -     |
+| `onValuesChange` | `any`       | 当表单项的值发生变化时触发的回调函数。可以是一个函数或一个返回函数的函数。       | -     |
 
 ## VForm.Item
 
 | 属性名                | 类型                            | 描述                                                                                                                                             | 默认值         |
 |--------------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `children`         | `func`                        | 一个函数，用于渲染表单项的内容。函数的参数为表单控件的属性对象，您可以根据需要对其进行修改。                                                                                                 | 无           |
+| `children`         | `ReactNode\|func`             | 表单组件或者一个函数返回一个表单组件，函数可以返回null                                                                                                                  | 无           |
 | `colon`            | `bool`                        | 是否在表单项标签后面显示冒号。                                                                                                                                | `false`     |
 | `dependency`       | [Dependency](#Dependency)     | 表单项的依赖关系。可以包含 `source`、`value` 和 `visible` 三个属性，每个属性都是一个对象，包含 `related` 和 `get` 两个属性。`related` 是一个数组，表示与该属性相关联的其他表单项的名称；`get` 是一个函数，用于计算该属性的值。 | 无           |
 | `hideLabel`        | `bool`                        | 是否隐藏表单项的标签。                                                                                                                                    | `false`     |
@@ -98,11 +121,11 @@ function handleSubmit(values) {
 
 ## Dependency
 
-| 属性名     | 类型       | 描述          |
-|---------|----------|-------------|
-| visible | `object` | 表单可见的联动配置   |
-| value   | `object` | 表单值的联动配置    |
-| source  | `object` | 表单数据源的联动配置  |
+| 属性名     | 类型       | 描述         |
+|---------|----------|------------|
+| visible | `object` | 表单可见的联动配置  |
+| value   | `object` | 表单值的联动配置   |
+| source  | `object` | 表单数据源的联动配置 |
 
 ## RemoteSource
 
@@ -140,9 +163,8 @@ function handleSubmit(values) {
 | isFieldsTouched   | `function` | 判断所有表单项是否被触碰过     |
 | submit            | `function` | 直接提交表单            |
 
-
 ## VForm.registerCustomRequest
-    
+
 ```javascript
 import VForm from 'taro-vform';
 
