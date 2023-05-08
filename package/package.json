@@ -4,7 +4,6 @@
   "description": "",
   "main": "src/index.js",
   "style": "src/index.css",
-  "sideEffects": false,
   "scripts": {
     "docgen": "react-docgen ./src/form.js"
   },
