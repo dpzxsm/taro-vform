@@ -87,16 +87,16 @@ function handleSubmit(values) {
 
 ## VForm
 
-| Prop 名称          | 类型          | 描述                                          | 默认值   |
-|------------------|-------------|---------------------------------------------|-------|
-| `children`       | `ReactNode` | 包含表单项的任意react元素                             | 无     |
-| `colon`          | `bool`      | 是否在表单项标签后面显示冒号。                             | false |
-| `form`           | `any`       | antd 的 Form 实例。您可以通过该属性传递表单实例，并使用它的方法来控制表单。 | -     |
-| `initialValues`  | `any`       | 表单的初始值。可以是一个普通对象或一个返回普通对象的函数。               | -     |
-| `onFinish`       | `func`      | 当表单提交成功后触发的回调函数。                            | -     |
-| `onFinishFailed` | `func`      | 当表单提交失败后触发的回调函数。                            | -     |
-| `onReset`        | `any`       | 当表单重置时触发的回调函数。可以是一个函数或一个返回函数的函数。            | -     |
-| `onValuesChange` | `any`       | 当表单项的值发生变化时触发的回调函数。可以是一个函数或一个返回函数的函数。       | -     |
+| Prop 名称          | 类型          | 描述                                                                   | 默认值   |
+|------------------|-------------|----------------------------------------------------------------------|-------|
+| `children`       | `ReactNode` | 包含表单项的任意react元素                                                      | 无     |
+| `colon`          | `bool`      | 是否在表单项标签后面显示冒号。                                                      | false |
+| `form`           | `any`       | 您可以通过该属性传递表单实例，并使用它的方法来控制表单，通过Form.useFrom可以创建form实例，不传递则使用默认的form实例 | -     |
+| `initialValues`  | `any`       | 表单的初始值。可以是一个普通对象或一个返回普通对象的函数。                                        | -     |
+| `onFinish`       | `func`      | 当表单提交成功后触发的回调函数。                                                     | -     |
+| `onFinishFailed` | `func`      | 当表单提交失败后触发的回调函数。                                                     | -     |
+| `onReset`        | `any`       | 当表单重置时触发的回调函数。可以是一个函数或一个返回函数的函数。                                     | -     |
+| `onValuesChange` | `any`       | 当表单项的值发生变化时触发的回调函数。可以是一个函数或一个返回函数的函数。                                | -     |
 
 ## VForm.Item
 
@@ -112,7 +112,7 @@ function handleSubmit(values) {
 | `inlineLabel`      | `bool`                        | 是否将表单项的标签和控件放在同一行。                                                                                                                             | `false`     |
 | `label`            | `any`                         | 表单项的标签。                                                                                                                                        | 无           |
 | `name`             | `any`                         | 表单项的名称。                                                                                                                                        | 无           |
-| `remoteSource`     | [RemoteSource](#RemoteSource) | 一个对象，表示远程数据源。该对象包含 `url`、`method`、`data` 和 `formatResult` 四个属性，分别表示数据源的 URL、请求方法、请求数据和结果格式化函数。                                                 | 无           |
+| `remoteSource`     | [RemoteSource](#RemoteSource) | 表单项的远程数据源。                                                                                                                                     | 无           |
 | `remoteSourceDeps` | `array\|function`             | 表示远程数据源的依赖项。可以是一个函数或一个数组, 依赖项变化时会触发数据源更新                                                                                                       | 无           |
 | `required`         | `func`                        | 表单项是否必填，相当于 rules=[{ required: true }] 的简洁写法                                                                                                   | 无           |
 | `rules`            | `array`                       | 表单项的验证规则，参考 [async-validator](https://github.com/yiminghe/async-validator)                                                                     | `[]`        |
