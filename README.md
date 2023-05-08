@@ -1,4 +1,4 @@
-# taro-vform
+# taro-vform [![npm version](https://badge.fury.io/js/taro-vform.svg)](https://badge.fury.io/js/taro-vform)
 
 这是一个基于 React 的表单库，专为 Taro 3.0 小程序开发而设计。它提供了一组易于使用的表单管理组件和hooks，以帮助您快速创建并管理表单。
 
