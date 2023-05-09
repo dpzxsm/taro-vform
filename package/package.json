@@ -20,8 +20,7 @@
   "dependencies": {
     "async-validator": "^3.5.1",
     "lodash.flatten": "^4.4.0",
-    "prop-types": "^15.8.1",
-    "react-docgen": "^5.4.3"
+    "prop-types": "^15.8.1"
   },
   "peerDependencies": {
     "@tarojs/components": ">=3.0.0",
