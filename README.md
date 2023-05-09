@@ -26,6 +26,18 @@ npm install --save taro-vform
 yarn add taro-vform
 ```
 
+## 注意
+如果taro配置中开启了webpack5 并且开启了prebundle，请关闭prebundle或者排查掉taro-vform
+```javascript
+compiler: {
+  type: 'webpack5',
+    prebundle: {
+    enable: true,
+      exclude: ["taro-vform"]
+  }
+}
+```
+
 ## 简单使用
 
 导入组件
