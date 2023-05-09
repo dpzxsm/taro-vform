@@ -168,7 +168,7 @@ form.submit();
 | `name`             | `strring\|array`                          | 表单项的名称，可以为数组，如果是数组，则表示该表单项有多个字段                                            | 无        |
 | `remoteSource`     | [RemoteSource](#RemoteSource)             | 表单项的远程数据源。                                                                 | 无        |
 | `remoteSourceDeps` | `array\|function`                         | 表示远程数据源的依赖项。可以是一个函数或一个数组, 依赖项变化时会触发数据源更新                                   | 无        |
-| `required`         | `func`                                    | 表单项是否必填，相当于 rules=[{ required: true }] 的简洁写法                               | 无        |
+| `required`         | `bool`                                    | 表单项是否必填，相当于 rules=[{ required: true }] 的简洁写法                               | 无        |
 | `rules`            | `array`                                   | 表单项的验证规则，参考 [async-validator](https://github.com/yiminghe/async-validator) | `[]`     |
 | `valuePropName`    | `string`                                  | 表单项的值属性名称。                                                                 | `value`  |
 | `sourcePropName`   | `string`                                  | 表单项的源数据属性名称。                                                               | `source` |
