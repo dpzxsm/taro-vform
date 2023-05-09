@@ -28,7 +28,7 @@ yarn add taro-vform
 
 ## 注意
 如果taro配置中开启了webpack5 并且开启了prebundle，请关闭prebundle或者排除掉taro-vform
-```javascript
+```
 compiler: {
   type: 'webpack5',
     prebundle: {
@@ -150,7 +150,7 @@ form.submit();
 | `onFinish`       | `func`      | 当表单提交成功后触发的回调函数。                                                     | -     |
 | `onFinishFailed` | `func`      | 当表单提交失败后触发的回调函数。                                                     | -     |
 | `onReset`        | `any`       | 当表单重置时触发的回调函数。可以是一个函数或一个返回函数的函数。                                     | -     |
-| `onValuesChange` | `any`       | 当表单项的值发生变化时触发的回调函数。可以是一个函数或一个返回函数的函数。                                | -     |
+| `onValuesChange` | `function`  | 当表单项的值发生变化时触发的回调函数。                                                  | -     |
 
 ## VForm.Item
 
