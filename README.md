@@ -209,11 +209,11 @@ form.submit();
 ```javascript
 import VForm from 'taro-vform';
 
-function customReques(options) {
+function customRequest(options) {
     // 必须返回一个promise对象
     return new Promise((resolve, reject) => {
     })
 }
 
-VForm.registerCustomRequest(customReques)
+VForm.registerCustomRequest(customRequest)
 ```javascript
