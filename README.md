@@ -113,6 +113,13 @@ function handleSubmit(values) {
 </VFormItem>
 ```
 
+## 支持hooks
+```javascript
+const form = Form.useForm();
+const values = form.getFieldsValue();
+const errors = form.getFieldsError();
+```
+
 ## VForm
 
 | Prop 名称          | 类型          | 描述                                                                   | 默认值   |
