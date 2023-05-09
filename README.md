@@ -159,7 +159,7 @@ form.submit();
 | `required`         | `func`                                    | 表单项是否必填，相当于 rules=[{ required: true }] 的简洁写法                               | 无           |
 | `rules`            | `array`                                   | 表单项的验证规则，参考 [async-validator](https://github.com/yiminghe/async-validator) | `[]`        |
 | `valuePropName`    | `string`                                  | 表单项的值属性名称。                                                                 | `value`     |
-| `sourcePropName`   | `string`                                  | 表单项的源数据属性名称。                                                               | 无           |
+| `sourcePropName`   | `string`                                  | 表单项的源数据属性名称。                                                               | `source`    |
 
 ## Dependency
 
