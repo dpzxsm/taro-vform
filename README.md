@@ -228,4 +228,4 @@ function customRequest(options) {
 }
 
 VForm.registerCustomRequest(customRequest)
-```javascript
+```
