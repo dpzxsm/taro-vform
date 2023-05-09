@@ -27,7 +27,7 @@ yarn add taro-vform
 ```
 
 ## 注意
-如果taro配置中开启了webpack5 并且开启了prebundle，请关闭prebundle或者排查掉taro-vform
+如果taro配置中开启了webpack5 并且开启了prebundle，请关闭prebundle或者排除掉taro-vform
 ```javascript
 compiler: {
   type: 'webpack5',
@@ -154,24 +154,24 @@ form.submit();
 
 ## VForm.Item
 
-| 属性名                | 类型                                        | 描述                                                                         | 默认值         |
-|--------------------|-------------------------------------------|----------------------------------------------------------------------------|-------------|
-| `children`         | `ReactNode\|func`                         | 表单组件或者一个函数返回一个表单组件，函数可以返回null                                              | 无           |
-| `colon`            | `bool`                                    | 是否在表单项标签后面显示冒号。                                                            | `false`     |
-| `dependency`       | Record<String, [Dependency](#Dependency)> | 表单项的依赖关系。可以包含 `source`、`value` 和 `visible` 三个属性                            | 无           |
-| `hideLabel`        | `bool`                                    | 是否隐藏表单项的标签。                                                                | `false`     |
-| `initialSource`    | `array`                                   | 表单项的初始源数据。                                                                 | `[]`        |
-| `initialValue`     | `any`                                     | 表单项的初始值。                                                                   | `undefined` |
-| `initialVisible`   | `bool`                                    | 表单项的初始可见状态。                                                                | `true`      |
-| `inlineLabel`      | `bool`                                    | 是否将表单项的标签和控件放在同一行。                                                         | `false`     |
-| `label`            | `any`                                     | 表单项的标签。                                                                    | 无           |
-| `name`             | `strring\|array`                          | 表单项的名称，可以为数组，如果是数组，则表示该表单项有多个字段                                            | 无           |
-| `remoteSource`     | [RemoteSource](#RemoteSource)             | 表单项的远程数据源。                                                                 | 无           |
-| `remoteSourceDeps` | `array\|function`                         | 表示远程数据源的依赖项。可以是一个函数或一个数组, 依赖项变化时会触发数据源更新                                   | 无           |
-| `required`         | `func`                                    | 表单项是否必填，相当于 rules=[{ required: true }] 的简洁写法                               | 无           |
-| `rules`            | `array`                                   | 表单项的验证规则，参考 [async-validator](https://github.com/yiminghe/async-validator) | `[]`        |
-| `valuePropName`    | `string`                                  | 表单项的值属性名称。                                                                 | `value`     |
-| `sourcePropName`   | `string`                                  | 表单项的源数据属性名称。                                                               | `source`    |
+| 属性名                | 类型                                        | 描述                                                                         | 默认值      |
+|--------------------|-------------------------------------------|----------------------------------------------------------------------------|----------|
+| `children`         | `ReactNode\|func`                         | 表单组件或者一个函数返回一个表单组件，函数可以返回null                                              | 无        |
+| `colon`            | `bool`                                    | 是否在表单项标签后面显示冒号。                                                            | `false`  |
+| `dependency`       | Record<String, [Dependency](#Dependency)> | 表单项的依赖关系。可以包含 `source`、`value` 和 `visible` 三个属性                            | 无        |
+| `hideLabel`        | `bool`                                    | 是否隐藏表单项的标签。                                                                | `false`  |
+| `initialSource`    | `array`                                   | 表单项的初始源数据。                                                                 | `[]`     |
+| `initialValue`     | `any`                                     | 表单项的初始值。                                                                   | 无        |
+| `initialVisible`   | `bool`                                    | 表单项的初始可见状态。                                                                | `true`   |
+| `inlineLabel`      | `bool`                                    | 是否将表单项的标签和控件放在同一行。                                                         | `false`  |
+| `label`            | `any`                                     | 表单项的标签。                                                                    | 无        |
+| `name`             | `strring\|array`                          | 表单项的名称，可以为数组，如果是数组，则表示该表单项有多个字段                                            | 无        |
+| `remoteSource`     | [RemoteSource](#RemoteSource)             | 表单项的远程数据源。                                                                 | 无        |
+| `remoteSourceDeps` | `array\|function`                         | 表示远程数据源的依赖项。可以是一个函数或一个数组, 依赖项变化时会触发数据源更新                                   | 无        |
+| `required`         | `func`                                    | 表单项是否必填，相当于 rules=[{ required: true }] 的简洁写法                               | 无        |
+| `rules`            | `array`                                   | 表单项的验证规则，参考 [async-validator](https://github.com/yiminghe/async-validator) | `[]`     |
+| `valuePropName`    | `string`                                  | 表单项的值属性名称。                                                                 | `value`  |
+| `sourcePropName`   | `string`                                  | 表单项的源数据属性名称。                                                               | `source` |
 
 ## Dependency
 
