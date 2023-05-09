@@ -116,8 +116,15 @@ function handleSubmit(values) {
 ## 支持hooks
 ```javascript
 const form = Form.useForm();
+// 获取当前表单的值
 const values = form.getFieldsValue();
+// 获取表单错误信息
 const errors = form.getFieldsError();
+// 校验表单
+form.validateFields().then(values => {}).catch(errors => {});
+// 直接提交表单，如果没有使用button来提交表单，可以直接用这个函数来提交
+form.submit();
+
 ```
 
 ## VForm
